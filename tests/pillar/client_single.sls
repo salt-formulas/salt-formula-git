@@ -1,0 +1,3 @@
+git:
+  client:
+    enabled: true
