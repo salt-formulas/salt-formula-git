@@ -1,0 +1,8 @@
+name: git
+os: Arch, Debian, Gentoo, MacOS, RedHat
+os_family: Arch, Debian, Gentoo, MacOS, RedHat
+version: 201606
+release: 1
+summary: Git salt formula
+description: Install and configure Git client.
+top_level_dir: git
