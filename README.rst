@@ -8,9 +8,9 @@ Git is a free and open source distributed version control system designed to han
 Sample pillars
 ==============
 
-.. code-block:: yaml
-
 Simplest GIT setup
+
+.. code-block:: yaml
 
     git:
       client:
