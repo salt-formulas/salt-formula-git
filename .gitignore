@@ -3,3 +3,8 @@ tests/build/
 *.swp
 *.pyc
 .ropeproject
+.venv/
+srv/
+.kitchen
+.vendor
+Gemfile.lock

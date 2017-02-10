@@ -1,0 +1,52 @@
+---
+driver:
+  name: docker
+  hostname: git.ci.local
+  use_sudo: false
+
+provisioner:
+  name: salt_solo
+  salt_install: bootstrap
+  salt_bootstrap_url: https://bootstrap.saltstack.com
+  salt_version: latest
+  require_chef: false
+  dependencies:
+    - name: linux
+      repo: git
+      source: https://github.com/salt-formulas/salt-formula-linux
+  log_level: error
+  formula: git
+  grains:
+    noservices: True
+  state_top:
+    base:
+      "*":
+        - git
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - git
+verifier:
+  name: inspec
+  sudo: true
+
+platforms:
+  - name: ubuntu-trusty
+    driver_config:
+      image: trevorj/salty-whales:trusty
+      platform: ubuntu
+
+  - name: ubuntu-xenial
+    driver_config:
+      image: trevorj/salty-whales:xenial
+      platform: ubuntu
+
+suites:
+
+  - name: client_single
+    provisioner:
+      pillars-from-files:
+        git.sls: tests/pillar/client_single.sls
+
+# vim: ft=yaml sw=2 ts=2 sts=2 tw=125
