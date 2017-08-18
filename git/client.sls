@@ -14,7 +14,7 @@ git_packages:
 set_git_{{ user.user.name }}_param_username:
   cmd.run:
   - name: sudo -u {{ user.user.name }} -H git config --global user.name "{{ user.user.get('full_name', user.user.name) }}"
-  - cwd: ~
+  - cwd: /
   - require:
     - user: system_user_{{ user.user.name }}
 
@@ -23,7 +23,7 @@ set_git_{{ user.user.name }}_param_username:
 set_git_{{ user.user.name }}_param_email:
   cmd.run:
   - name: sudo -u {{ user.user.name }} -H git config --global user.email "{{ user.user.email }}"
-  - cwd: ~
+  - cwd: /
   - require:
     - user: system_user_{{ user.user.name }}
 
