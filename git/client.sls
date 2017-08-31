@@ -1,5 +1,6 @@
 {%- from "git/map.jinja" import client with context %}
 {%- from "linux/map.jinja" import system with context %}
+
 {%- if client.enabled %}
 
 include:
@@ -12,18 +13,22 @@ git_packages:
 {%- for user in client.user %}
 
 set_git_{{ user.user.name }}_param_username:
-  cmd.run:
-  - name: sudo -u {{ user.user.name }} -H git config --global user.name "{{ user.user.get('full_name', user.user.name) }}"
-  - cwd: /
+  git.config_set:
+  - user: {{ user.user.name }}
+  - name: user.name
+  - value: "{{ user.user.get('full_name', user.user.name) }}"
+  - global: True
   - require:
     - user: system_user_{{ user.user.name }}
 
 {%- if user.user.email is defined %}
 
 set_git_{{ user.user.name }}_param_email:
-  cmd.run:
-  - name: sudo -u {{ user.user.name }} -H git config --global user.email "{{ user.user.email }}"
-  - cwd: /
+  git.config.set:
+  - user: {{ user.user.name }}
+  - name: user.email
+  - value: "{{ user.user.email }}"
+  - global: True
   - require:
     - user: system_user_{{ user.user.name }}
 
