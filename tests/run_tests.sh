@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 set -e
-[ -n "$DEBUG" ] && set -x
+if [[ $DEBUG =~ ^(True|true|1|yes)$ ]]; then
+    set -x
+fi
 
 CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 METADATA=${CURDIR}/../metadata.yml
@@ -22,7 +24,7 @@ SALT_CACHE_DIR=${SALT_CACHE_DIR:-${SALT_CONFIG_DIR}/cache}
 
 SALT_OPTS="${SALT_OPTS} --retcode-passthrough --local -c ${SALT_CONFIG_DIR} --log-file=/dev/null"
 
-if [ "x${SALT_VERSION}" != "x" ]; then
+if [ -n "${SALT_VERSION}" ]; then
     PIP_SALT_VERSION="==${SALT_VERSION}"
 fi
 
