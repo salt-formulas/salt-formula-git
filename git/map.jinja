@@ -1,23 +1,22 @@
 
 {%- set client = salt['grains.filter_by']({
+    'default': {
+        'disable_ssl_verification': False,
+        'user': [],
+    },
     'Arch': {
         'pkgs': ['git'],
-        'user': [],
     },
     'Debian': {
         'pkgs': ['git-core'],
-        'user': [],
     },
     'Gentoo': {
         'pkgs': ['dev-vcs/git'],
-        'user': [],
     },
     'MacOS': {
         'pkgs': ['git'],
-        'user': [],
     },
     'RedHat': {
         'pkgs': ['git'],
-        'user': [],
     },
-}, merge=salt['pillar.get']('git:client')) %}
+}, merge=salt['pillar.get']('git:client'), base='default') %}

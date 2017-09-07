@@ -1,6 +1,7 @@
 git:
   client:
     enabled: true
+    disable_ssl_verification: True
     user:
     - user:
         name: jdoe

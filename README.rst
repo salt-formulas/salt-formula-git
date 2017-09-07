@@ -28,6 +28,19 @@ GIT with user setup
             name: jdoe
             email: j@doe.com
 
+GIT with user and SSL setup
+
+.. code-block:: yaml
+
+    git:
+      client:
+        disable_ssl_verification: True
+        enabled: true
+        user:
+        - user:
+            name: jdoe
+            email: j@doe.com
+
 Reclass with GIT with user setup
 
 .. code-block:: yaml
@@ -37,6 +50,18 @@ Reclass with GIT with user setup
         enabled: true
         user:
         - user: ${linux:system:user:jdoe}
+
+Reclass with GIT with user and SSL setup
+
+.. code-block:: yaml
+
+    git:
+      client:
+        disable_ssl_verification: True
+        enabled: true
+        user:
+        - user: ${linux:system:user:jdoe}
+
 
 Read more
 =========

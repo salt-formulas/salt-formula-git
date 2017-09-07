@@ -34,6 +34,19 @@ set_git_{{ user.user.name }}_param_email:
 
 {%- endif %}
 
+{%- if client.disable_ssl_verification == True %}
+
+set_git_ssl_verification_off:
+  git.config.set:
+  - user: {{ user.user.name }}
+  - name: http.sslVerify
+  - value: "false"
+  - global: True
+  - require:
+    - user: system_user_{{ user.user.name }}
+
+{%- endif %}
+
 {%- endfor %}
 
 {%- endif %}
