@@ -24,7 +24,7 @@ set_git_{{ user.user.name }}_param_username:
 {%- if user.user.email is defined %}
 
 set_git_{{ user.user.name }}_param_email:
-  git.config.set:
+  git.config_set:
   - user: {{ user.user.name }}
   - name: user.email
   - value: "{{ user.user.email }}"
@@ -37,7 +37,7 @@ set_git_{{ user.user.name }}_param_email:
 {%- if client.disable_ssl_verification == True %}
 
 set_git_ssl_verification_off:
-  git.config.set:
+  git.config_set:
   - user: {{ user.user.name }}
   - name: http.sslVerify
   - value: "false"
