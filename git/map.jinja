@@ -1,3 +1,24 @@
+{%- set server = salt['grains.filter_by']({
+    'default': {
+        'disable_ssl_verification': False,
+        'user': [],
+    },
+    'Arch': {
+        'pkgs': ['git','fcgiwrap', 'apache-tools'],
+    },
+    'Debian': {
+        'pkgs': ['git', 'fcgiwrap', 'apache2-utils'],
+    },
+    'Gentoo': {
+        'pkgs': ['dev-vcs/git', 'www-misc/fcgiwrap', 'app-admin/apache-tools'],
+    },
+    'MacOS': {
+        'pkgs': ['git', 'fcgiwrap'],
+    },
+    'RedHat': {
+        'pkgs': ['git', 'fcgiwrap', 'httpd-tools'],
+    },
+}, merge=salt['pillar.get']('git:server'), base='default') %}
 
 {%- set client = salt['grains.filter_by']({
     'default': {

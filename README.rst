@@ -62,6 +62,19 @@ Reclass with GIT with user and SSL setup
         user:
         - user: ${linux:system:user:jdoe}
 
+Reclass with GIT over HTTP server setup. Requires web server.
+
+.. code-block:: yaml
+
+    git:
+      server:
+        directory: /srv/git
+        repos:
+          - name: gerritlib
+            url: https://github.com/openstack-infra/gerritlib.git
+          - name: jeepyb
+            url: https://github.com/openstack-infra/jeepyb.git
+
 
 Read more
 =========

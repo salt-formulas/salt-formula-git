@@ -14,6 +14,9 @@ provisioner:
     - name: linux
       repo: git
       source: https://github.com/salt-formulas/salt-formula-linux
+    - name: nginx
+      repo: git
+      source: https://github.com/salt-formulas/salt-formula-nginx
   log_level: error
   formula: git
   grains:
@@ -43,5 +46,8 @@ suites:
     provisioner:
       pillars-from-files:
         git.sls: tests/pillar/client_single.sls
-
+  - name: server_single
+    provisioner:
+      pillars-from-files:
+        git.sls: tests/pillar/server_single.sls
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125
