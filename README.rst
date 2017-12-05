@@ -70,6 +70,17 @@ Reclass with GIT over HTTP server setup. Requires web server.
       server:
         directory: /srv/git
         repos:
+          - name: custom-repo-1
+          - name: custom-repo-2
+
+Reclass with GIT over HTTP server setup. Requires web server. Mirrored upsream repos example.
+
+.. code-block:: yaml
+
+    git:
+      server:
+        directory: /srv/git
+        repos:
           - name: gerritlib
             url: https://github.com/openstack-infra/gerritlib.git
           - name: jeepyb
