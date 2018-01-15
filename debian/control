@@ -11,6 +11,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-git.git
 
 Package: salt-formula-git
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass, salt-formula-linux
+Depends: ${misc:Depends}, salt-formula-linux
 Description: Git salt formula
  Install and configure Git client.
