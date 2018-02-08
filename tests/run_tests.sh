@@ -41,7 +41,7 @@ setup_virtualenv() {
     log_info "Setting up Python virtualenv"
     virtualenv $VENV_DIR
     source ${VENV_DIR}/bin/activate
-    pip install salt${PIP_SALT_VERSION}
+    python -m pip install salt${PIP_SALT_VERSION}
 }
 
 setup_mock_bin() {
@@ -127,7 +127,7 @@ clean() {
 
 salt_run() {
     [ -e ${VENV_DIR}/bin/activate ] && source ${VENV_DIR}/bin/activate
-    salt-call ${SALT_OPTS} $*
+    python $(which salt-call) ${SALT_OPTS} $*
 }
 
 prepare() {
