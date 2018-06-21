@@ -9,11 +9,6 @@ git:
 linux:
   system:
     enabled: true
-    group:
-      jdoe:
-        enabled: true
-        name: jdoe
-        system: true
     user:
       jdoe:
         enabled: true
